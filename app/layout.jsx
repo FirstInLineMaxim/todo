@@ -1,3 +1,4 @@
+import { Nav } from '../components/nav'
 import Link from 'next/link'
 import './globals.css'
 
@@ -10,9 +11,7 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
-        <nav> <Link href="/">Home</Link>
-          <Link href="/notes">Notes</Link>
-        </nav>
+        <Nav />
         {children}
       </body>
     </html>
