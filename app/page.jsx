@@ -1,12 +1,13 @@
-import styles from './page.module.css'
+"use client"
+import { Heading1, Text } from '@/src/components/StyledTypographie'
 
 export default function Home() {
   return (
     <main>
-      <div className={styles.container}>
-        <div className={styles.maincontent}>
-          <h1>Hello World!</h1>
-
+      <div >
+        <div >
+          <Heading1 fontSize={[6, 7, 8]}>Hello World!</Heading1>
+          <Text fontSize={[3, 4, 5]} > test</Text>
         </div>
       </div>
     </main>

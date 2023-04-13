@@ -22,9 +22,11 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "^5.3.9",
+    "styled-icons": "^10.47.0",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^2.1.1",
     "concurrently": "^8.0.1"
   }
 }
