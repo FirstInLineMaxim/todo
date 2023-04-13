@@ -1,5 +1,7 @@
-import { Nav } from '../components/nav'
+import { ThemeProvider } from 'styled-components'
+import { Nav } from '../src/components/nav'
 import './globals.css'
+import { theme } from '@/src/theme/theme'
 
 export default function RootLayout({ children }) {
   return (
@@ -10,8 +12,11 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body>
-        <Nav />
-        {children}
+        <ThemeProvider theme={theme}>
+
+          <Nav />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
