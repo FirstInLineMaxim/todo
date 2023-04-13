@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "client": "next dev",
+    "server": "pocketbase.exe serve",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -19,6 +20,11 @@
     "next": "13.1.2",
     "pocketbase": "^0.10.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "styled-components": "^5.3.9",
+    "styled-system": "^5.1.5"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
   }
 }
