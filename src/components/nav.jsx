@@ -4,8 +4,14 @@ import Toggle from "./StyledSwitch";
 import { Redux } from "styled-icons/boxicons-logos";
 import { Button } from "./StyledButtons";
 import { Flex } from "./StyledLayout";
+import { registerUser } from "../Redux/asyncDispatch/users";
 
 export function Navbar({ themeToggler, darkmode }) {
+  const handleSubmit = (e) => {
+    if (e.key === 'Enter') {
+      registerUser()
+    }
+  }
   return (
     <>
       <Flex py={2} mb={3} width={[1, 1 / 1.2]} justifyContent='space-between' alignItems='center' mx={'auto'}>
@@ -18,6 +24,7 @@ export function Navbar({ themeToggler, darkmode }) {
             Todo's
 
           </Button></Link>
+          <input type="text" name="signup" id="signup" onKeyDown={(e) => handleSubmit(e)} />
         </Flex>
         <Toggle toggleTheme={themeToggler} darkmode={darkmode} />
       </Flex>

@@ -29,7 +29,8 @@ export const todoReducer = (state = initData, action) => {
       return [...state, payload];
     }
     case REMOVE_TODO: {
-      return;
+      const { id } = payload;
+      return state.filter((todo) => todo.id !== id);
     }
     case TOGGLE_TODO: {
       const { id } = payload;

@@ -7,7 +7,7 @@
 
 
 # db
-pb_data
+pb_data/*
 # testing
 /coverage
 

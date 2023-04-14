@@ -1,5 +1,6 @@
 import {
   ADD_TODO,
+  REMOVE_TODO,
   SET_TODOS,
   SET_TODOS_FAIL,
   START_SETTING_TODOS,
@@ -7,16 +8,14 @@ import {
 } from "../redux_types/todoConstants";
 
 import PocketBase from "pocketbase";
-const pb = new PocketBase("http://127.0.0.1:8090");
+const pb = new PocketBase(process.env.NEXT_PUBLIC_BASE_API);
 
 const url = process.env.TODO_API;
 export function fetchTodos() {
   return async (dispatch) => {
     dispatch({ type: START_SETTING_TODOS });
     try {
-      const json = await fetch(
-        "http://127.0.0.1:8090/api/collections/todo/records"
-      );
+      const json = await fetch(process.env.NEXT_PUBLIC_TODO_API);
       const todos = await json.json();
       dispatch({ type: SET_TODOS, payload: todos.items });
     } catch (error) {
@@ -50,6 +49,19 @@ export function checkedTodo(id) {
         checked: !checked,
       });
       dispatch({ type: TOGGLE_TODO, payload: { id } });
+    } catch (error) {
+      dispatch({ type: SET_TODOS_FAIL, payload: error });
+    }
+  };
+}
+
+export function deleteTodo(id) {
+  return async (dispatch) => {
+    dispatch({ type: START_SETTING_TODOS });
+    try {
+      const record = pb.collection("todo");
+      await record.delete(id);
+      dispatch({ type: REMOVE_TODO, payload: { id } });
     } catch (error) {
       dispatch({ type: SET_TODOS_FAIL, payload: error });
     }
