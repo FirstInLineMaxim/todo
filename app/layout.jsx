@@ -6,13 +6,16 @@ import { useState } from 'react'
 import { ResetCSS } from '@/src/theme/ResetCSS'
 import { GlobalStyles } from '@/src/theme/GlobalStyles'
 import RootProvider from '@/src/Redux/providers/RootProvider'
-
+import StyledComponentsRegistry from '@/src/Context/StyledComponentsRegistry'
 export default function RootLayout({ children }) {
-  const [theme, setTheme] = useState(false);
+
+  const [darkmode, setDarkmode] = useState(() => JSON.parse(localStorage.getItem('darkmode')) || false);
   const themeToggler = () => {
-    console.log('first')
-    setTheme(!theme)
+    setDarkmode(!darkmode)
+    localStorage.setItem('darkmode', !darkmode)
   }
+
+
   return (
     <html lang="en">
       {/*
@@ -23,16 +26,22 @@ export default function RootLayout({ children }) {
 
       </head>
       <body>
-        <ThemeProvider theme={theme ? darkTheme : lightTheme}>
-          <RootProvider>
+        <StyledComponentsRegistry>
 
-            <ResetCSS />
-            <GlobalStyles />
-            <Navbar themeToggler={themeToggler} theme={theme} />
-            {children}
-          </RootProvider>
-        </ThemeProvider>
+          <ThemeProvider theme={darkmode ? darkTheme : lightTheme}>
+            <RootProvider>
+
+              <ResetCSS />
+              <GlobalStyles />
+              <Navbar themeToggler={themeToggler} darkmode={darkmode} />
+              {children}
+            </RootProvider>
+          </ThemeProvider>
+        </StyledComponentsRegistry>
       </body>
     </html >
   )
+
 }
+
+

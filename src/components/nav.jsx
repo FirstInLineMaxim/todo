@@ -5,7 +5,7 @@ import { Redux } from "styled-icons/boxicons-logos";
 import { Button } from "./StyledButtons";
 import { Flex } from "./StyledLayout";
 
-export function Navbar({ themeToggler, theme }) {
+export function Navbar({ themeToggler, darkmode }) {
   return (
     <>
       <Flex py={2} mb={3} width={[1, 1 / 1.2]} justifyContent='space-between' alignItems='center' mx={'auto'}>
@@ -19,7 +19,7 @@ export function Navbar({ themeToggler, theme }) {
 
           </Button></Link>
         </Flex>
-        <Toggle toggleTheme={themeToggler} theme={theme} />
+        <Toggle toggleTheme={themeToggler} darkmode={darkmode} />
       </Flex>
     </>
   );

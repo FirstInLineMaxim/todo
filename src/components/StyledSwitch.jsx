@@ -65,10 +65,10 @@ const Switch = styled.div`
 `;
 
 
-const Toggle = ({ theme, toggleTheme }) => {
+const Toggle = ({ darkmode, toggleTheme }) => {
   return (
     <Switch onClick={() => toggleTheme()}>
-      <input type="checkbox" checked={theme} onChange={toggleTheme} />
+      <input type="checkbox" checked={darkmode} onChange={toggleTheme} />
       <span className="slider" />
     </Switch>
   )

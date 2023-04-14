@@ -1,5 +1,5 @@
 import { ADD_TODO, GET_TODO } from '@/src/Redux/redux_types/todoConstants'
-import { createTodo } from '@/src/db/dbTodoFunc'
+import { createTodo } from '@/src/Redux/asyncDispatch/dbTodoFunc'
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
@@ -14,7 +14,7 @@ export default function Input() {
     function addTodo(e) {
         if (e.key === 'Enter') {
             if (value !== '') {
-                dispatch(createTodo({ title: value, content: 'testcontent', checked: false }))
+                dispatch(createTodo({ title: value, content: '', checked: false }))
             }
         }
 

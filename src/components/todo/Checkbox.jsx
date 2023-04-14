@@ -1,4 +1,4 @@
-import { checkedTodo } from '@/src/db/dbTodoFunc'
+import { checkedTodo } from '@/src/Redux/asyncDispatch/dbTodoFunc'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 
