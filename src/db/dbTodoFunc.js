@@ -3,6 +3,7 @@ import {
   SET_TODOS,
   SET_TODOS_FAIL,
   START_SETTING_TODOS,
+  TOGGLE_TODO,
 } from "../Redux/redux_types/todoConstants";
 
 import PocketBase from "pocketbase";
@@ -25,7 +26,6 @@ export function fetchTodos() {
 }
 
 export function createTodo({ title, content }) {
-  console.log(title);
   return async (dispatch) => {
     dispatch({ type: START_SETTING_TODOS });
 
@@ -33,6 +33,23 @@ export function createTodo({ title, content }) {
       const newTodo = await pb.collection("todo").create({ title, content });
 
       dispatch({ type: ADD_TODO, payload: newTodo });
+    } catch (error) {
+      dispatch({ type: SET_TODOS_FAIL, payload: error });
+    }
+  };
+}
+
+export function checkedTodo(id) {
+  return async (dispatch) => {
+    dispatch({ type: START_SETTING_TODOS });
+    try {
+      console.log(pb);
+      const record = pb.collection("todo");
+      const { checked } = await record.getFirstListItem(`id="${id}"`);
+      await record.update(`${id}`, {
+        checked: !checked,
+      });
+      dispatch({ type: TOGGLE_TODO, payload: { id } });
     } catch (error) {
       dispatch({ type: SET_TODOS_FAIL, payload: error });
     }

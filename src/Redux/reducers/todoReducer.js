@@ -32,7 +32,15 @@ export const todoReducer = (state = initData, action) => {
       return;
     }
     case TOGGLE_TODO: {
-      return;
+      const { id } = payload;
+      return state.map((todo, i) => {
+        if (todo.id !== id) return todo;
+
+        return {
+          ...todo,
+          checked: !todo.checked,
+        };
+      });
     }
     case EDIT_TODO: {
       return;
