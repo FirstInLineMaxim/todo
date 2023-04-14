@@ -1,6 +1,6 @@
 const space = [0, 4, 8, 16, 32, 64, 128, 256, 512];
 const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64, 96];
-const breakpoints = ["32em", "40em", "52em", "64em", "80em"];
+const breakpoints = ["576px", "768px", "992px", "1200px", "1400px"];
 export const lightTheme = {
   body: "#FFF",
   text: "#363537",
