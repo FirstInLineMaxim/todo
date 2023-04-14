@@ -14,6 +14,7 @@ import styled from "styled-components"
 const Switch = styled.div`
   display: block;
   position: relative;
+
   width: ${props => props.width || '3.5em'};
   height: ${props => props.height || '2em'};
   --width-of-switch: ${props => props.width || '3.5em'};
@@ -65,12 +66,12 @@ const Switch = styled.div`
 
 
 const Toggle = ({ theme, toggleTheme }) => {
-    return (
-        <Switch onClick={() => toggleTheme()}>
-            <input type="checkbox" checked={theme} onChange={toggleTheme} />
-            <span className="slider" />
-        </Switch>
-    )
+  return (
+    <Switch onClick={() => toggleTheme()}>
+      <input type="checkbox" checked={theme} onChange={toggleTheme} />
+      <span className="slider" />
+    </Switch>
+  )
 }
 
 export default Toggle;

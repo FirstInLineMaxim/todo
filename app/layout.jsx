@@ -5,6 +5,7 @@ import { darkTheme, lightTheme, } from '@/src/theme/theme'
 import { useState } from 'react'
 import { ResetCSS } from '@/src/theme/ResetCSS'
 import { GlobalStyles } from '@/src/theme/GlobalStyles'
+import RootProvider from '@/src/Redux/providers/RootProvider'
 
 export default function RootLayout({ children }) {
   const [theme, setTheme] = useState(false);
@@ -22,13 +23,16 @@ export default function RootLayout({ children }) {
 
       </head>
       <body>
-        <ResetCSS />
         <ThemeProvider theme={theme ? darkTheme : lightTheme}>
-          <GlobalStyles />
-          <Navbar themeToggler={themeToggler} theme={theme} />
-          {children}
+          <RootProvider>
+
+            <ResetCSS />
+            <GlobalStyles />
+            <Navbar themeToggler={themeToggler} theme={theme} />
+            {children}
+          </RootProvider>
         </ThemeProvider>
       </body>
-    </html>
+    </html >
   )
 }
