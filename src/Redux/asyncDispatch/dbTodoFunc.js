@@ -10,7 +10,6 @@ import {
 import PocketBase from "pocketbase";
 const pb = new PocketBase(process.env.NEXT_PUBLIC_BASE_API);
 
-const url = process.env.TODO_API;
 export function fetchTodos() {
   return async (dispatch) => {
     dispatch({ type: START_SETTING_TODOS });

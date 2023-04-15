@@ -1,6 +1,6 @@
 "use client"
 import { ThemeProvider } from 'styled-components'
-import { Nav, Navbar } from '../src/components/nav'
+import { Navbar } from '../src/components/nav'
 import { darkTheme, lightTheme, } from '@/src/theme/theme'
 import { useState } from 'react'
 import { ResetCSS } from '@/src/theme/ResetCSS'
