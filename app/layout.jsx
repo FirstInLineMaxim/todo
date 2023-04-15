@@ -8,8 +8,10 @@ import { GlobalStyles } from '@/src/theme/GlobalStyles'
 import RootProvider from '@/src/Redux/providers/RootProvider'
 import StyledComponentsRegistry from '@/src/Context/StyledComponentsRegistry'
 export default function RootLayout({ children }) {
-
-  const [darkmode, setDarkmode] = useState(() => JSON.parse(localStorage.getItem('darkmode')) || false);
+  const [darkmode, setDarkmode] = useState(() => {
+    if (typeof window !== "undefined")
+      JSON.parse(localStorage.getItem('darkmode')) || false
+  });
   const themeToggler = () => {
     setDarkmode(!darkmode)
     localStorage.setItem('darkmode', !darkmode)

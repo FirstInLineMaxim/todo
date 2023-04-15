@@ -14,7 +14,7 @@ export function Navbar({ themeToggler, darkmode }) {
   }
   return (
     <>
-      <Flex py={2} mb={3} width={[1, 1 / 1.2]} justifyContent='space-between' alignItems='center' mx={'auto'}>
+      <Flex py={2} mb={3} width={[1, 1 / 1.2]} justifyContent='space-between' alignItems='center' mx={'auto'} id="navbar">
         <Redux width={'40px'} />
         <Flex width={[1, 1 / 2]} justifyContent='center' alignItems='center' >
           <Link href="/"><Button>
@@ -24,7 +24,6 @@ export function Navbar({ themeToggler, darkmode }) {
             Todo's
 
           </Button></Link>
-          <input type="text" name="signup" id="signup" onKeyDown={(e) => handleSubmit(e)} />
         </Flex>
         <Toggle toggleTheme={themeToggler} darkmode={darkmode} />
       </Flex>

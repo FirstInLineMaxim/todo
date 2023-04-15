@@ -1,13 +1,14 @@
 const { default: styled } = require("styled-components");
 
 const Button = styled.button`
+  box-shadow: 7px 7px 0px 0px #0B2447;
  width: 6.5em;
  height: 2.3em;
  margin: 0.5em;
  background: ${({ theme }) => theme.body == '#FFF' ? '#363537' : '#FFF'};
  color: ${({ theme }) => theme.text == '#363537' ? '#FAFAFA' : '#363537'};
  border: none;
- border-radius: 0.625em;
+
  font-size: 20px;
  font-weight: bold;
  cursor: pointer;

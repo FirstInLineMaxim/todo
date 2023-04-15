@@ -7,6 +7,7 @@ const Box = styled.div`
   ${space};
   ${layout};
   ${color};
+
   box-sizing: 'border-box';
   min-width:  0;
   `
