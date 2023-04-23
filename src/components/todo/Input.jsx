@@ -77,34 +77,35 @@ width:100%;
 
 
 export default function TodoInput() {
-    const [value, setValue] = useState('')
-    const dispatch = useDispatch()
+  const [value, setValue] = useState('')
+  const dispatch = useDispatch()
 
 
-    const handleChange = e => {
-        setValue(e.target.value)
+  const handleChange = e => {
+    setValue(e.target.value)
+  }
+  function addTodo(e) {
+    if (e.key === 'Enter') {
+      if (value !== '') {
+        dispatch(createTodo({ title: value, content: '', checked: false }))
+        setValue("")
+      }
     }
-    function addTodo(e) {
-        if (e.key === 'Enter') {
-            if (value !== '') {
-                dispatch(createTodo({ title: value, content: '', checked: false }))
-            }
-        }
 
-    }
+  }
 
-    return (
-        <InputContainer>
-            <Input type="text" value={value} onChange={(e) => handleChange(e)} onKeyDown={(e) => addTodo(e)} />
-            <Label>Write Something</Label>
-        </InputContainer>
+  return (
+    <InputContainer>
+      <Input type="text" value={value} onChange={(e) => handleChange(e)} onKeyDown={(e) => addTodo(e)} />
+      <Label>Write Something</Label>
+    </InputContainer>
 
-        // <InputContainer>
-        //     <Input type="text" />
-        //     <Label>Write a task</Label>
-        //     <Topline className="topline" />
-        //     <Underline className="underline" />
-        // </InputContainer>
-        // <input type='text' value={value} onChange={(e) => handleChange(e)} onKeyDown={(e) => addTodo(e)} />
-    )
+    // <InputContainer>
+    //     <Input type="text" />
+    //     <Label>Write a task</Label>
+    //     <Topline className="topline" />
+    //     <Underline className="underline" />
+    // </InputContainer>
+    // <input type='text' value={value} onChange={(e) => handleChange(e)} onKeyDown={(e) => addTodo(e)} />
+  )
 }
